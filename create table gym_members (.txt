@@ -1,0 +1,81 @@
+create table gym_members (
+   id number(5) primary key,
+   name varchar2(20) not null,
+   age number(3) not null check(age>0),
+   joining date not null,
+   expiry date not null,
+   cost number(9) not null,
+   city varchar2(30) default 'Mumbai' not null,
+   height number(6) not null check(height>0),
+   weight number(5) not null check(weight>0),
+   created_at date default sysdate);
+
+
+create sequence sq_namee
+start with 1
+increment by 1;
+
+
+insert into gym_members (id,name,age,joining,expiry,cost,city,height,weight)values
+(sq_namee.nextval,'Mayank',21,'01-Feb-2023','01-Feb-2024',10000,'Kolhapur',175,55);
+
+
+insert into gym_members (id,name,age,joining,expiry,cost,city,height,weight)values
+(sq_namee.nextval,'Soham',21,'08-Feb-2023','08-Feb-2024',12000,'Pune',165,60);
+
+
+
+insert into gym_members (id,name,age,joining,expiry,cost,city,height,weight)values
+(sq_namee.nextval,'Tanvi',23,'10-Mar-2023','08-Apr-2024',15000,'Mumbai',165,60);
+
+
+
+insert into gym_members (id,name,age,joining,expiry,cost,city,height,weight)values
+(sq_namee.nextval,'Tanya',21,'15-Mar-2023','08-Apr-2023',5000,'Nashik',155,45);
+
+
+
+insert into gym_members (id,name,age,joining,expiry,cost,city,height,weight)values
+(sq_namee.nextval,'Shardul',25,'25-Sep-2023','08-Apr-2023',8000,'Nagpur',173,65);
+
+
+insert into gym_members (id,name,age,joining,expiry,cost,city,height,weight)values
+(sq_namee.nextval,'Gauri',25,'25-Sep-2023','08-Apr-2023',8000,'Nagpur',173,65);
+
+
+select * from gym_members;
+
+
+select * from gym_members where cost>5000;
+
+
+select * from gym_members where city='Pune';
+
+
+select * from gym_members where city='Mumbai' and age>20;
+
+
+select * from gym_members where(expiry-joining) < 365;
+
+
+select name, (weight/((height/100)*(height/100))) as bmi from gym_members;
+
+
+select name, EXTRACT(YEAR FROM sysdate) - age as BIRTH_YEAR from gym_members 
+		where city = 'pune';
+
+
+select * from gym_members order by age desc;
+
+
+
+
+
+
+
+
+
+
+
+
+
